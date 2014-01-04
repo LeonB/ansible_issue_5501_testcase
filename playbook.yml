@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  tasks:
+    - name: test unicode
+      action: test
+      register: "mountpoint_noatime_check"
+
+    - debug: var="{{mountpoint_noatime_check}}"
+      when: "not {{mountpoint_noatime_check.result}}"
